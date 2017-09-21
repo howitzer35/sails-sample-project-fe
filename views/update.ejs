@@ -6,13 +6,14 @@
 <br/>
 <%- partial ('partials/statusmessage.ejs') %>
 
-<form action="#" method="">
+<form action="/update" method="POST">
   <div class="form-group">
-    <label for="student_id">SELECT AN STUDENT TO UPDATE</label><br/>
-    <select id="student_id" name="student_id">
+    <label for="student_id">SELECT A STUDENT TO UPDATE</label><br/>
+
+    <select class="selectpicker" id="student_id" name="student_id" data-live-search="true" data-header="Select a student" data-actions-box="true" title="Select one of the following">
     <% if(typeof students != "undefined" && students.length > 0){ %>
       <% students.forEach(function(student){ %>
-        <option value="<%= student.student_id %>">
+        <option value="<%= student.student_id %>" data-icon="glyphicon glyphicon-user">
           <%= student.last_name + ", " +  student.first_name %>
         </option>
       <% }) %>
@@ -23,7 +24,7 @@
 
 <h2>Update Student</h2>
 <form action="/update" method="POST" class="form-horizontal" id="updateStudentForm">
-  <input type="hidden" name="student_id" id="student_id" value="">
+  <input type="hidden" name="student_id" value="">
   <div class="form-group">
     <label for="first_name" class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-10">
@@ -37,9 +38,9 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="start_date" class="col-sm-2 control-label">Email Address</label>
+    <label for="start_date" class="col-sm-2 control-label">Start Date</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="start_date" name="start_date" placeholder="2017-01-01" required>
+      <input type="date" class="form-control" id="start_date" name="start_date" placeholder="2016-12-01" required>
     </div>
   </div>
   <div class="form-group">

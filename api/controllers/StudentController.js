@@ -74,10 +74,10 @@ module.exports = {
           headers: { "Content-Type": "application/json" }
       };
 
-      client.put(endpoint + "/" + req.body.id, args, function (data, response) {
+      client.put(endpoint + "/" + req.body.student_id, args, function (data, response) {
 
         if(response.statusCode != "200"){
-            req.addFlash("error", data.message);
+            req.addFlash("error", "got: " + response.statusCode + " instead of 200");
             return res.redirect('/update');
         }
 
